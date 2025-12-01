@@ -1,4 +1,3 @@
-import pytest
 from day1.day01 import getPasword, getPasword2
 
 
@@ -10,6 +9,7 @@ def testExamplePart1():
 
 def testPart1():
     result = getPasword(readFile("day1/part1.txt").splitlines())
+    print(result)
     assert result == 1154  # Change to expected value
 
 
