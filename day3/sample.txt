@@ -1,0 +1,2 @@
+# Sample input for Day 3
+# Replace this with actual sample data when available
