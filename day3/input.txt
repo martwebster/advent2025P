@@ -1,0 +1,2 @@
+# Puzzle input for Day 3
+# Replace with actual input when available
