@@ -1,30 +1,33 @@
 def getJoltage(data):
-    #987654321111111
+    # 987654321111111
+    int_array = [int(x) for x in data]
 
-    top_two = [int(x) for x in data]
-    top_two.sort(reverse=True)
-    top_two = top_two[:2]
+    max_value = max(int_array)
 
-    result = ""
-    for x in data:
-        if int(x) in top_two:
-            result = result + x 
-            top_two.remove(int(x))
+    val = ""
+    if max_value == int_array[-1]:
+        int_array.remove(max_value)
+        next_value = max(int_array)
+        val = int(str(next_value) + str(max_value))
+    else:
+        pos = int_array.index(max_value)
+        int_array = int_array[pos + 1 :]
+        next_value = max(int_array)
+        val = int(str(max_value) + str(next_value))
+    return val
 
-    print(result)
-    return int(result)
 
 def getTotalVolage(banks):
-    return sum(map(getJoltage,banks.splitlines()))
+    return sum(map(getJoltage, banks.splitlines()))
 
 
 def solve_part2(data):
     """
     Placeholder for Day 3 Part 2 solution.
-    
+
     Args:
         data: Input data for the puzzle
-        
+
     Returns:
         Solution for part 2
     """
