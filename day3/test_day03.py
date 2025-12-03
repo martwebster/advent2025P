@@ -1,4 +1,4 @@
-from day3.day03 import getJoltage, getTotalVolage, solve_part2
+from day3.day03 import getJoltage, getTotalVolage
 
 
 def test_example_part1():
@@ -17,11 +17,15 @@ def test_part1():
 
 
 def test_example_part2():
-    """Test Part 2 with sample input."""
-    sample_input = readFile("day3/sample.txt")
-    result = solve_part2(sample_input)
-    # TODO: Update expected value once puzzle is available
-    assert result == 0
+    assert getJoltage("987654321111111", 12) == 987654321111
+    assert getJoltage("811111111111119", 12) == 811111111119
+    assert getJoltage("234234234234278", 12) == 434234234278
+    assert getJoltage("818181911112111", 12) == 888911112111
+
+
+def test_part2():
+    sample_input = readFile("day3/input.txt")
+    assert getTotalVolage(sample_input, 12) == 171419245422055
 
 
 def readFile(path):
