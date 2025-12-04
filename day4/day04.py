@@ -65,10 +65,9 @@ def remove_rolls(grid):
 
 
 # Part2
-def remove_all_rolls(data):
-    removing = remove_rolls(data)
-    total_removed = removing
-    while removing > 0:
-        removing = remove_rolls(data)
+def remove_all_rolls(grid):
+    total_removed = 0
+    # walrus operator - assigns the variable and returns the value
+    while (removing := remove_rolls(grid)) > 0:
         total_removed += removing
     return total_removed
