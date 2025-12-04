@@ -1,16 +1,14 @@
-from day4.day04 import canAccess, get_positions, remove_all_rolls, remove_rolls
+from day4.day04 import count_accessable_rolls, remove_all_rolls, remove_rolls
 
 
 def test_example_part1():
-
     sample_input = readFile("day4/sample.txt").splitlines()
-    assert canAccess(sample_input, 2, 0) == True
-    assert get_positions(sample_input) == 13
+    assert count_accessable_rolls(sample_input) == 13
 
 
 def test_part1():
     sample_input = readFile("day4/input.txt").splitlines()
-    assert get_positions(sample_input) == 1464
+    assert count_accessable_rolls(sample_input) == 1464
 
 
 def test_example_part2():
