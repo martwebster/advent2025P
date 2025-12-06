@@ -31,7 +31,10 @@ def get_invalidIds2(productIds):
     return sum(map(_invalid_product_id, productIds.split(",")))
 
 
-def _invalid_product_id(item):
+def _invalid_product_id(item: str) -> int:
+
+    item.split("")
+
     start = int(item.split("-")[0])
     end = int(item.split("-")[1])
 
@@ -51,16 +54,3 @@ def _invalid_product_id(item):
             total = total + num
 
     return total
-
-
-# if __name__ == "__main__":
-#     # Read the actual puzzle input
-#     with open("day2/notes.txt", "r") as f:
-#         puzzle_input = f.read().strip()
-
-#     directions = puzzle_input.splitlines()
-
-#     # Solve both parts
-#     part1_answer = get_pasword(directions)
-
-#     print(f"Part 1: {part1_answer}")
