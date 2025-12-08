@@ -1,10 +1,12 @@
-from day8.day08 import total_beams
+from day8.day08 import build_circuit, build_circuits, connect_points
 
 
 def test_example_part1():
     data = readFile("day8/sample.txt").splitlines()
-
-    assert total_beams(data) == 21
+    points = build_circuit(data)
+    connect_points(points, 10)
+    result = build_circuits(points)
+    assert result == 40
 
 
 def readFile(path):
