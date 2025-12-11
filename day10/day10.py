@@ -1,13 +1,4 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class Pos:
-    x: str
-    y: int
-
-
-# [.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}
+# part 1
 def get_presses(line):
     result = line[1 : line.index("]")]
     buttonStr = line[line.index("]") + 2 : line.index("{") - 1]
@@ -52,18 +43,46 @@ def press_button(indicator, button):
     return result
 
 
-def get_max_area(lines: list):
-    positions = [
-        Pos(int(line.split(",")[0]), int(line.split(",")[1])) for line in lines
-    ]
-    positions.sort(key=lambda c: c.x)
+def get_fewest_joltages(lines):
+    return sum([get_presses_joltage(line) for line in lines])
 
-    max_area = 0
-    for i, pos in enumerate(positions):
-        for other in positions[i + 1 :]:
-            if other.y != other.x:
-                area = get_area(pos, other)
-                max_area = max(max_area, area)
 
-    print(positions)
-    return max_area
+# part 2
+def get_presses_joltage(line):
+    result = line[1 : line.index("]")]
+    buttonStr = line[line.index("]") + 2 : line.index("{") - 1]
+    buttonArr = buttonStr.split(" ")
+    buttons = [[int(x) for x in but[1:-1].split(",")] for but in buttonArr]
+
+    joltageString = line[line.index("{") + 1 : -1]
+    desiredJoltage = joltageString.split(",")
+    initial = [0] * len(desiredJoltage)
+    intialStr = ",".join(map(str, initial))
+    joltages = {intialStr}
+
+    preses = 0
+
+    while not any(joltage == joltageString for joltage in joltages):
+        joltages = {
+            result
+            for joltage in joltages
+            for result in press_all_jottage_buttons(joltage, buttons)
+        }
+        preses += 1
+
+    return preses
+
+
+def press_all_jottage_buttons(joltage, buttons):
+    result = []
+    for button in buttons:
+        result.append(press_joltage_button(joltage, button))
+    return result
+
+
+def press_joltage_button(joltage, button):
+    result = [int(x) for x in joltage.split(",")]
+    for toggle in button:
+        result[toggle] = result[toggle] + 1
+    resultSr = ",".join(map(str, result))
+    return resultSr

@@ -1,8 +1,5 @@
-from day10.day10 import (
-    get_fewest,
-    get_fewest_joltages,
+from day11.day11 import (
     get_presses,
-    get_presses_joltage,
 )
 
 
@@ -24,32 +21,6 @@ def test_example_part1():
 def test_part1():
     data = readFile("day10/input.txt").splitlines()
     result = get_fewest(data)
-    assert result == 438
-
-
-def test_example_part2():
-    example = "[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}"
-    result = get_presses_joltage(example)
-    assert result == 10
-
-    assert (
-        get_presses_joltage(
-            "[...#.] (0,2,3,4) (2,3) (0,4) (0,1,2) (1,2,3,4) {7,5,12,7,2}"
-        )
-        == 12
-    )
-
-    assert (
-        get_presses_joltage(
-            "[.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}"
-        )
-        == 11
-    )
-
-
-def test_part2():
-    data = readFile("day10/input.txt").splitlines()
-    result = get_fewest_joltages(data)
     assert result == 438
 
 
