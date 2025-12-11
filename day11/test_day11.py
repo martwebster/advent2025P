@@ -1,27 +1,37 @@
 from day11.day11 import (
-    get_presses,
+    count_to_outs,
+    get_config,
+    server_to_out,
 )
 
 
 def test_example_part1():
-    example = "[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}"
-    result = get_presses(example)
-    assert result == 2
-
-    assert (
-        get_presses("[...#.] (0,2,3,4) (2,3) (0,4) (0,1,2) (1,2,3,4) {7,5,12,7,2}") == 3
-    )
-
-    assert (
-        get_presses("[.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}")
-        == 2
-    )
+    data = readFile("day11/sample.txt").splitlines()
+    config = get_config(data)
+    outs = count_to_outs(config)
+    assert outs == 5
 
 
 def test_part1():
-    data = readFile("day10/input.txt").splitlines()
-    result = get_fewest(data)
-    assert result == 438
+    data = readFile("day11/input.txt").splitlines()
+    config = get_config(data)
+    outs = count_to_outs(config)
+    assert outs == 552
+
+
+def test_example_part2():
+    data = readFile("day11/sample2.txt").splitlines()
+    config = get_config(data)
+    outs = server_to_out(config)
+    assert outs == 2
+
+
+def test_part2():
+    data = readFile("day11/input.txt").splitlines()
+    config = get_config(data)
+    outs = server_to_out(config)
+    print(f"\nActual result: {outs}")
+    assert outs == 307608674109300
 
 
 def readFile(path):
